@@ -1,5 +1,5 @@
 /* =========================
-   1. RESET DASAR
+   1. RESET DAN DASAR
 ========================= */
 
 * {
@@ -21,7 +21,7 @@ body {
 
 button {
     cursor: pointer;
-    transition: 0.3s;
+    transition: 0.25s;
 }
 
 button:hover {
@@ -36,10 +36,10 @@ button:hover {
 .auth-page {
     min-height: 100vh;
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
     padding: 20px;
-    background: linear-gradient(135deg, #a18aff, #e9b7e9, #c6baff);
+    background: linear-gradient(135deg, #a18aff, #e9b7e9);
 }
 
 .auth-box {
@@ -66,29 +66,29 @@ button:hover {
 }
 
 .auth-box h1 {
-    color: #7962e8;
     margin-top: 15px;
+    color: #7962e8;
     font-size: 30px;
 }
 
 .subtitle {
+    margin: 8px 0 25px;
     color: #999;
     font-size: 13px;
-    margin: 8px 0 25px;
 }
 
 .auth-tabs {
     display: flex;
     padding: 5px;
+    margin-bottom: 20px;
     background: #f3efff;
     border-radius: 12px;
-    margin-bottom: 20px;
 }
 
 .auth-tabs button {
     width: 50%;
-    border: none;
     padding: 12px;
+    border: none;
     border-radius: 9px;
     background: transparent;
     color: #777;
@@ -102,8 +102,8 @@ button:hover {
 
 form label {
     display: block;
-    text-align: left;
     margin: 14px 0 7px;
+    text-align: left;
     font-size: 13px;
     font-weight: 600;
 }
@@ -115,6 +115,7 @@ input {
     border-radius: 11px;
     outline: none;
     background: #fcfbff;
+    font-size: 14px;
 }
 
 input:focus {
@@ -141,8 +142,8 @@ input:focus {
 
 .auth-footer {
     margin-top: 25px;
-    font-size: 11px;
     color: #aaa;
+    font-size: 11px;
 }
 
 
@@ -151,15 +152,16 @@ input:focus {
 ========================= */
 
 .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 7%;
-    background: white;
-    box-shadow: 0 3px 15px #40306a0c;
     position: sticky;
     top: 0;
     z-index: 10;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    padding: 20px 7%;
+    background: white;
+    box-shadow: 0 3px 15px #40306a0c;
 }
 
 .brand {
@@ -178,8 +180,8 @@ input:focus {
 }
 
 .nav-menu a {
-    text-decoration: none;
     color: #625c70;
+    text-decoration: none;
     font-size: 14px;
     font-weight: 600;
 }
@@ -189,7 +191,7 @@ input:focus {
 }
 
 .logout-btn {
-    padding: 10px 17px;
+    padding: 11px 17px;
     border: none;
     border-radius: 10px;
     background: #f2edff;
@@ -199,13 +201,13 @@ input:focus {
 
 
 /* =========================
-   4. HERO SECTION
+   4. HERO
 ========================= */
 
 .hero {
+    max-width: 1150px;
     min-height: 340px;
     margin: 30px auto;
-    max-width: 1150px;
     padding: 55px;
     border-radius: 28px;
     background: linear-gradient(120deg, #7762e7, #a98be9, #e4b5d9);
@@ -223,9 +225,9 @@ input:focus {
 }
 
 .hero h1 {
+    margin: 18px 0;
     font-size: 43px;
     line-height: 1.2;
-    margin: 18px 0;
 }
 
 .hero h1 span {
@@ -233,42 +235,32 @@ input:focus {
 }
 
 .hero-content p {
+    margin-bottom: 25px;
     font-size: 14px;
     line-height: 1.7;
-    margin-bottom: 25px;
 }
 
 .hero-btn {
     display: inline-block;
-    text-decoration: none;
     padding: 13px 20px;
     border-radius: 10px;
     background: white;
     color: #7962e8;
+    text-decoration: none;
     font-size: 13px;
     font-weight: bold;
 }
 
 .hero-decoration {
-    width: 190px;
-    height: 190px;
+    width: 180px;
+    height: 180px;
+    display: grid;
+    place-items: center;
+    border: 1px solid #ffffff50;
     border-radius: 50%;
     background: #ffffff25;
-    border: 1px solid #ffffff50;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    transform: rotate(10deg);
-    letter-spacing: 2px;
-    font-size: 13px;
-    font-weight: bold;
-}
-
-.hero-circle {
-    font-size: 65px;
-    margin-bottom: 5px;
+    font-size: 90px;
+    flex-shrink: 0;
 }
 
 
@@ -280,11 +272,11 @@ input:focus {
     max-width: 1150px;
     margin: 30px auto;
     padding: 25px 30px;
-    background: white;
-    border-radius: 18px;
     display: flex;
-    align-items: center;
     justify-content: space-between;
+    align-items: center;
+    border-radius: 18px;
+    background: white;
     box-shadow: 0 5px 20px #4c3b780b;
 }
 
@@ -301,6 +293,7 @@ input:focus {
 
 .welcome h2 span {
     color: #7962e8;
+    overflow-wrap: anywhere;
 }
 
 .welcome small {
@@ -335,9 +328,9 @@ input:focus {
 .search-section p,
 .section-title p,
 .favorite-section p {
+    margin-top: 7px;
     color: #999;
     font-size: 13px;
-    margin-top: 7px;
 }
 
 .search-box {
@@ -348,21 +341,29 @@ input:focus {
 
 .search-box input {
     flex: 1;
+    min-width: 0;
     background: white;
 }
 
 .search-box button {
-    padding: 0 25px;
+    min-width: 90px;
+    padding: 0 20px;
     border: none;
     border-radius: 10px;
-    color: white;
     background: #7962e8;
+    color: white;
     font-weight: bold;
 }
 
+.search-message {
+    min-height: 18px;
+    color: #7962e8 !important;
+    font-size: 12px !important;
+}
+
 .shopee-search {
-    margin-top: 13px;
-    padding: 12px 18px;
+    margin-top: 10px;
+    padding: 13px 18px;
     border: none;
     border-radius: 10px;
     background: #fff0e9;
@@ -377,8 +378,8 @@ input:focus {
 
 .categories {
     display: flex;
-    gap: 12px;
     flex-wrap: wrap;
+    gap: 12px;
     margin-top: 20px;
 }
 
@@ -392,9 +393,9 @@ input:focus {
 }
 
 .category.active {
+    border-color: #7962e8;
     background: #7962e8;
     color: white;
-    border-color: #7962e8;
 }
 
 
@@ -406,6 +407,7 @@ input:focus {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 10px;
     margin-bottom: 23px;
 }
 
@@ -418,28 +420,30 @@ input:focus {
 
 .product-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 22px;
 }
 
 .product-card {
+    min-width: 0;
     padding: 12px;
-    background: white;
     border-radius: 17px;
+    background: white;
     box-shadow: 0 5px 22px #40306a0c;
     transition: 0.3s;
 }
 
 .product-card:hover {
-    transform: translateY(-6px);
+    transform: translateY(-5px);
     box-shadow: 0 12px 30px #40306a17;
 }
 
 .product-card img {
+    display: block;
     width: 100%;
     height: 210px;
-    object-fit: cover;
     border-radius: 12px;
+    object-fit: cover;
     background: #f4efff;
 }
 
@@ -454,14 +458,16 @@ input:focus {
 }
 
 .product-info h3 {
-    font-size: 16px;
+    min-height: 40px;
     margin: 8px 0;
+    font-size: 16px;
+    overflow-wrap: anywhere;
 }
 
 .price {
+    margin-bottom: 13px;
     color: #7962e8;
     font-weight: 800;
-    margin-bottom: 13px;
 }
 
 .product-actions {
@@ -471,6 +477,7 @@ input:focus {
 
 .buy-btn {
     flex: 1;
+    min-width: 0;
     padding: 11px 5px;
     border: none;
     border-radius: 9px;
@@ -486,7 +493,7 @@ input:focus {
     border-radius: 9px;
     background: #fff0f5;
     color: #e477a8;
-    font-size: 17px;
+    font-size: 19px;
 }
 
 .no-product {
@@ -516,19 +523,19 @@ input:focus {
     margin-top: 50px;
     padding: 40px 20px;
     background: #302b45;
-    text-align: center;
     color: white;
+    text-align: center;
 }
 
 .footer h2 {
-    color: #c5aaff;
     margin-bottom: 10px;
+    color: #c5aaff;
 }
 
 .footer p {
+    margin: 9px;
     color: #c3bdce;
     font-size: 12px;
-    margin: 9px;
 }
 
 .footer a {
@@ -541,15 +548,48 @@ input:focus {
 
 
 /* =========================
-   11. RESPONSIVE
+   11. RESPONSIVE TABLET
 ========================= */
 
-@media (max-width: 750px) {
+@media (max-width: 850px) {
+
+    .hero,
+    .welcome,
+    .search-section,
+    .category-section,
+    .products-section,
+    .favorite-section {
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+
+    .hero {
+        padding: 35px;
+    }
+
+    .hero h1 {
+        font-size: 35px;
+    }
+
+    .product-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+
+/* =========================
+   12. RESPONSIVE HP
+========================= */
+
+@media (max-width: 600px) {
 
     .navbar {
-        padding: 16px;
+        padding: 18px 20px;
         flex-wrap: wrap;
-        gap: 15px;
+    }
+
+    .brand {
+        font-size: 23px;
     }
 
     .nav-menu {
@@ -559,10 +599,14 @@ input:focus {
         gap: 20px;
     }
 
+    .nav-menu a {
+        font-size: 13px;
+    }
+
     .hero {
-        margin: 18px;
-        padding: 30px 23px;
-        min-height: 290px;
+        min-height: 280px;
+        margin: 20px 15px;
+        padding: 27px 22px;
     }
 
     .hero h1 {
@@ -570,14 +614,9 @@ input:focus {
     }
 
     .hero-decoration {
-        width: 100px;
-        height: 100px;
-        font-size: 8px;
-        flex-shrink: 0;
-    }
-
-    .hero-circle {
-        font-size: 35px;
+        width: 85px;
+        height: 85px;
+        font-size: 42px;
     }
 
     .welcome,
@@ -588,13 +627,62 @@ input:focus {
         margin: 25px 15px;
     }
 
+    .welcome {
+        padding: 25px 20px;
+    }
+
+    .welcome h2 {
+        font-size: 22px;
+    }
+
+    .welcome-icon {
+        font-size: 38px;
+    }
+
+    .search-box {
+        gap: 7px;
+    }
+
+    .search-box input {
+        font-size: 13px;
+    }
+
+    .search-box button {
+        min-width: 65px;
+        padding: 0 12px;
+    }
+
+    .categories {
+        gap: 10px;
+    }
+
+    .category {
+        padding: 12px 15px;
+    }
+
     .product-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: 12px;
     }
 
+    .product-card {
+        padding: 9px;
+    }
+
     .product-card img {
-        height: 150px;
+        height: 145px;
+    }
+
+    .product-info h3 {
+        font-size: 13px;
+    }
+
+    .buy-btn {
+        font-size: 10px;
+    }
+
+    .favorite-btn {
+        padding: 8px 10px;
     }
 
     .section-title span {
@@ -602,7 +690,13 @@ input:focus {
     }
 }
 
+
+/* =========================
+   13. HP KECIL
+========================= */
+
 @media (max-width: 380px) {
+
     .hero-decoration {
         display: none;
     }
@@ -618,9 +712,4 @@ input:focus {
     .nav-menu {
         gap: 12px;
     }
-
-    .nav-menu a {
-        font-size: 12px;
-    }
-  }
-  
+       }
