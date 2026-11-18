@@ -1,0 +1,626 @@
+/* =========================
+   1. RESET DASAR
+========================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #faf9ff;
+    color: #302b45;
+}
+
+.hidden {
+    display: none !important;
+}
+
+button {
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    transform: translateY(-2px);
+}
+
+
+/* =========================
+   2. LOGIN DAN REGISTER
+========================= */
+
+.auth-page {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background: linear-gradient(135deg, #a18aff, #e9b7e9, #c6baff);
+}
+
+.auth-box {
+    width: 100%;
+    max-width: 410px;
+    padding: 35px;
+    border-radius: 25px;
+    background: white;
+    box-shadow: 0 20px 60px #51408b30;
+    text-align: center;
+}
+
+.logo {
+    width: 60px;
+    height: 60px;
+    margin: auto;
+    display: grid;
+    place-items: center;
+    border-radius: 18px;
+    background: linear-gradient(135deg, #7962e8, #c38be9);
+    color: white;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.auth-box h1 {
+    color: #7962e8;
+    margin-top: 15px;
+    font-size: 30px;
+}
+
+.subtitle {
+    color: #999;
+    font-size: 13px;
+    margin: 8px 0 25px;
+}
+
+.auth-tabs {
+    display: flex;
+    padding: 5px;
+    background: #f3efff;
+    border-radius: 12px;
+    margin-bottom: 20px;
+}
+
+.auth-tabs button {
+    width: 50%;
+    border: none;
+    padding: 12px;
+    border-radius: 9px;
+    background: transparent;
+    color: #777;
+    font-weight: bold;
+}
+
+.auth-tabs button.active {
+    background: #7962e8;
+    color: white;
+}
+
+form label {
+    display: block;
+    text-align: left;
+    margin: 14px 0 7px;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+input {
+    width: 100%;
+    padding: 13px;
+    border: 1px solid #e6e1f1;
+    border-radius: 11px;
+    outline: none;
+    background: #fcfbff;
+}
+
+input:focus {
+    border-color: #9479eb;
+    box-shadow: 0 0 0 3px #9479eb20;
+}
+
+.primary-btn {
+    width: 100%;
+    margin-top: 22px;
+    padding: 14px;
+    border: none;
+    border-radius: 11px;
+    background: linear-gradient(135deg, #7962e8, #bd8ce9);
+    color: white;
+    font-weight: bold;
+}
+
+.message {
+    margin-top: 15px;
+    font-size: 13px;
+    color: #e45b72;
+}
+
+.auth-footer {
+    margin-top: 25px;
+    font-size: 11px;
+    color: #aaa;
+}
+
+
+/* =========================
+   3. NAVBAR
+========================= */
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 7%;
+    background: white;
+    box-shadow: 0 3px 15px #40306a0c;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.brand {
+    color: #7962e8;
+    font-size: 25px;
+    font-weight: 800;
+}
+
+.brand span {
+    color: #e69acb;
+}
+
+.nav-menu {
+    display: flex;
+    gap: 28px;
+}
+
+.nav-menu a {
+    text-decoration: none;
+    color: #625c70;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.nav-menu a:hover {
+    color: #7962e8;
+}
+
+.logout-btn {
+    padding: 10px 17px;
+    border: none;
+    border-radius: 10px;
+    background: #f2edff;
+    color: #7962e8;
+    font-weight: bold;
+}
+
+
+/* =========================
+   4. HERO SECTION
+========================= */
+
+.hero {
+    min-height: 340px;
+    margin: 30px auto;
+    max-width: 1150px;
+    padding: 55px;
+    border-radius: 28px;
+    background: linear-gradient(120deg, #7762e7, #a98be9, #e4b5d9);
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    overflow: hidden;
+}
+
+.tagline {
+    font-size: 11px;
+    letter-spacing: 3px;
+    font-weight: bold;
+}
+
+.hero h1 {
+    font-size: 43px;
+    line-height: 1.2;
+    margin: 18px 0;
+}
+
+.hero h1 span {
+    color: #ffe2f5;
+}
+
+.hero-content p {
+    font-size: 14px;
+    line-height: 1.7;
+    margin-bottom: 25px;
+}
+
+.hero-btn {
+    display: inline-block;
+    text-decoration: none;
+    padding: 13px 20px;
+    border-radius: 10px;
+    background: white;
+    color: #7962e8;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.hero-decoration {
+    width: 190px;
+    height: 190px;
+    border-radius: 50%;
+    background: #ffffff25;
+    border: 1px solid #ffffff50;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    transform: rotate(10deg);
+    letter-spacing: 2px;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.hero-circle {
+    font-size: 65px;
+    margin-bottom: 5px;
+}
+
+
+/* =========================
+   5. WELCOME
+========================= */
+
+.welcome {
+    max-width: 1150px;
+    margin: 30px auto;
+    padding: 25px 30px;
+    background: white;
+    border-radius: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 5px 20px #4c3b780b;
+}
+
+.welcome p {
+    color: #a28be6;
+    font-size: 11px;
+    letter-spacing: 2px;
+    font-weight: bold;
+}
+
+.welcome h2 {
+    margin: 8px 0;
+}
+
+.welcome h2 span {
+    color: #7962e8;
+}
+
+.welcome small {
+    color: #999;
+}
+
+.welcome-icon {
+    font-size: 45px;
+}
+
+
+/* =========================
+   6. SEARCH
+========================= */
+
+.search-section,
+.category-section,
+.products-section,
+.favorite-section {
+    max-width: 1150px;
+    margin: 40px auto;
+    padding: 0 10px;
+}
+
+.search-section h2,
+.category-section h2,
+.section-title h2,
+.favorite-section h2 {
+    font-size: 23px;
+}
+
+.search-section p,
+.section-title p,
+.favorite-section p {
+    color: #999;
+    font-size: 13px;
+    margin-top: 7px;
+}
+
+.search-box {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.search-box input {
+    flex: 1;
+    background: white;
+}
+
+.search-box button {
+    padding: 0 25px;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    background: #7962e8;
+    font-weight: bold;
+}
+
+.shopee-search {
+    margin-top: 13px;
+    padding: 12px 18px;
+    border: none;
+    border-radius: 10px;
+    background: #fff0e9;
+    color: #e66b38;
+    font-weight: bold;
+}
+
+
+/* =========================
+   7. KATEGORI
+========================= */
+
+.categories {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.category {
+    padding: 12px 19px;
+    border: 1px solid #eee9fa;
+    border-radius: 12px;
+    background: white;
+    color: #766b89;
+    font-weight: 600;
+}
+
+.category.active {
+    background: #7962e8;
+    color: white;
+    border-color: #7962e8;
+}
+
+
+/* =========================
+   8. PRODUK
+========================= */
+
+.section-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 23px;
+}
+
+.section-title span {
+    color: #a48ae7;
+    font-size: 11px;
+    letter-spacing: 1px;
+    font-weight: bold;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+}
+
+.product-card {
+    padding: 12px;
+    background: white;
+    border-radius: 17px;
+    box-shadow: 0 5px 22px #40306a0c;
+    transition: 0.3s;
+}
+
+.product-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 30px #40306a17;
+}
+
+.product-card img {
+    width: 100%;
+    height: 210px;
+    object-fit: cover;
+    border-radius: 12px;
+    background: #f4efff;
+}
+
+.product-info {
+    padding: 12px 5px 5px;
+}
+
+.product-category {
+    color: #a48ae7;
+    font-size: 11px;
+    font-weight: bold;
+}
+
+.product-info h3 {
+    font-size: 16px;
+    margin: 8px 0;
+}
+
+.price {
+    color: #7962e8;
+    font-weight: 800;
+    margin-bottom: 13px;
+}
+
+.product-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.buy-btn {
+    flex: 1;
+    padding: 11px 5px;
+    border: none;
+    border-radius: 9px;
+    background: #7962e8;
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.favorite-btn {
+    padding: 10px 13px;
+    border: none;
+    border-radius: 9px;
+    background: #fff0f5;
+    color: #e477a8;
+    font-size: 17px;
+}
+
+.no-product {
+    grid-column: 1 / -1;
+    padding: 30px;
+    text-align: center;
+    color: #aaa;
+}
+
+
+/* =========================
+   9. WISHLIST
+========================= */
+
+.favorite-section {
+    padding-top: 25px;
+    padding-bottom: 30px;
+    border-top: 1px solid #eeeaf7;
+}
+
+
+/* =========================
+   10. FOOTER
+========================= */
+
+.footer {
+    margin-top: 50px;
+    padding: 40px 20px;
+    background: #302b45;
+    text-align: center;
+    color: white;
+}
+
+.footer h2 {
+    color: #c5aaff;
+    margin-bottom: 10px;
+}
+
+.footer p {
+    color: #c3bdce;
+    font-size: 12px;
+    margin: 9px;
+}
+
+.footer a {
+    display: inline-block;
+    margin-top: 15px;
+    color: #ffc1e5;
+    text-decoration: none;
+    font-size: 13px;
+}
+
+
+/* =========================
+   11. RESPONSIVE
+========================= */
+
+@media (max-width: 750px) {
+
+    .navbar {
+        padding: 16px;
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+
+    .nav-menu {
+        order: 3;
+        width: 100%;
+        justify-content: center;
+        gap: 20px;
+    }
+
+    .hero {
+        margin: 18px;
+        padding: 30px 23px;
+        min-height: 290px;
+    }
+
+    .hero h1 {
+        font-size: 29px;
+    }
+
+    .hero-decoration {
+        width: 100px;
+        height: 100px;
+        font-size: 8px;
+        flex-shrink: 0;
+    }
+
+    .hero-circle {
+        font-size: 35px;
+    }
+
+    .welcome,
+    .search-section,
+    .category-section,
+    .products-section,
+    .favorite-section {
+        margin: 25px 15px;
+    }
+
+    .product-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+
+    .product-card img {
+        height: 150px;
+    }
+
+    .section-title span {
+        font-size: 9px;
+    }
+}
+
+@media (max-width: 380px) {
+    .hero-decoration {
+        display: none;
+    }
+
+    .product-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .product-card img {
+        height: 220px;
+    }
+
+    .nav-menu {
+        gap: 12px;
+    }
+
+    .nav-menu a {
+        font-size: 12px;
+    }
+  }
+  
