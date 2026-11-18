@@ -1,6 +1,7 @@
-/* =================================
+
+/* ==========================================
    1. MENGAMBIL ELEMEN HTML
-================================= */
+========================================== */
 
 const authPage = document.getElementById("authPage");
 const shopPage = document.getElementById("shopPage");
@@ -13,34 +14,44 @@ const registerTab = document.getElementById("registerTab");
 
 const authMessage = document.getElementById("authMessage");
 
+const searchForm = document.getElementById("searchForm");
+const searchInput = document.getElementById("searchInput");
+const searchMessage = document.getElementById("searchMessage");
+
 const productList = document.getElementById("productList");
 const favoriteList = document.getElementById("favoriteList");
 
-const searchInput = document.getElementById("searchInput");
 
+/* ==========================================
+   2. PENYIMPANAN DATA LOCALSTORAGE
+========================================== */
 
-/* =================================
-   2. DATA LOCALSTORAGE
-================================= */
+function getStorage(key, fallback) {
+    try {
+        const data = localStorage.getItem(key);
+        return data ? JSON.parse(data) : fallback;
+    } catch (error) {
+        return fallback;
+    }
+}
 
-let users = JSON.parse(
-    localStorage.getItem("trendora_users") || "[]"
-);
+let users = getStorage("trendora_users", []);
 
-let currentUser = JSON.parse(
-    localStorage.getItem("trendora_session") || "null"
-);
+let currentUser = getStorage("trendora_session", null);
 
 let favorites = [];
+
 let activeCategory = "Semua";
+
 let searchKeyword = "";
 
 
-/* =================================
+/* ==========================================
    3. DATA PRODUK
-================================= */
+========================================== */
 
 const products = [
+
     {
         id: 1,
         name: "Elegant Korean Blouse",
@@ -49,6 +60,7 @@ const products = [
         keyword: "blouse wanita korean style",
         image: "https://images.unsplash.com/photo-1551163943-3f6a855d1153?w=600"
     },
+
     {
         id: 2,
         name: "Casual Wide Leg Pants",
@@ -57,6 +69,7 @@ const products = [
         keyword: "celana wide leg wanita",
         image: "https://images.unsplash.com/photo-1541099649105-f69ad21f3246?w=600"
     },
+
     {
         id: 3,
         name: "Mini Shoulder Bag",
@@ -65,6 +78,7 @@ const products = [
         keyword: "mini shoulder bag wanita",
         image: "https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=600"
     },
+
     {
         id: 4,
         name: "Classic White Sneakers",
@@ -73,6 +87,7 @@ const products = [
         keyword: "sepatu sneakers putih wanita",
         image: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=600"
     },
+
     {
         id: 5,
         name: "Soft Pink Dress",
@@ -81,6 +96,7 @@ const products = [
         keyword: "dress pink wanita",
         image: "https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=600"
     },
+
     {
         id: 6,
         name: "Daily Skincare Set",
@@ -89,12 +105,13 @@ const products = [
         keyword: "skincare daily set",
         image: "https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?w=600"
     }
+
 ];
 
 
-/* =================================
-   4. LOGIN DAN REGISTER TAB
-================================= */
+/* ==========================================
+   4. PINDAH LOGIN DAN REGISTER
+========================================== */
 
 loginTab.addEventListener("click", function() {
 
@@ -105,7 +122,9 @@ loginTab.addEventListener("click", function() {
     registerTab.classList.remove("active");
 
     authMessage.textContent = "";
+
 });
+
 
 registerTab.addEventListener("click", function() {
 
@@ -116,25 +135,29 @@ registerTab.addEventListener("click", function() {
     loginTab.classList.remove("active");
 
     authMessage.textContent = "";
+
 });
 
 
-/* =================================
-   5. REGISTER
-================================= */
+/* ==========================================
+   5. REGISTER AKUN
+========================================== */
 
 registerForm.addEventListener("submit", function(e) {
 
     e.preventDefault();
 
     const name = document.getElementById("registerName").value.trim();
+
     const email = document.getElementById("registerEmail").value.trim().toLowerCase();
+
     const password = document.getElementById("registerPassword").value;
 
     if (users.some(user => user.email === email)) {
 
         authMessage.style.color = "red";
         authMessage.textContent = "Email sudah terdaftar!";
+
         return;
     }
 
@@ -156,30 +179,39 @@ registerForm.addEventListener("submit", function(e) {
     loginTab.click();
 
     authMessage.style.color = "green";
-    authMessage.textContent = "Registrasi berhasil! Silakan login.";
+
+    authMessage.textContent =
+        "Registrasi berhasil! Silakan login.";
+
 });
 
 
-/* =================================
-   6. LOGIN
-================================= */
+/* ==========================================
+   6. LOGIN AKUN
+========================================== */
 
 loginForm.addEventListener("submit", function(e) {
 
     e.preventDefault();
 
     const email = document.getElementById("loginEmail").value.trim().toLowerCase();
+
     const password = document.getElementById("loginPassword").value;
 
     const user = users.find(function(item) {
+
         return item.email === email &&
                item.password === password;
+
     });
 
     if (!user) {
 
         authMessage.style.color = "red";
-        authMessage.textContent = "Email atau password salah!";
+
+        authMessage.textContent =
+            "Email atau password salah!";
+
         return;
     }
 
@@ -196,16 +228,18 @@ loginForm.addEventListener("submit", function(e) {
     loginForm.reset();
 
     showShop();
+
 });
 
 
-/* =================================
-   7. MENAMPILKAN HALAMAN UTAMA
-================================= */
+/* ==========================================
+   7. MENAMPILKAN DASHBOARD
+========================================== */
 
 function showShop() {
 
     authPage.classList.add("hidden");
+
     shopPage.classList.remove("hidden");
 
     document.getElementById("userName").textContent =
@@ -214,27 +248,29 @@ function showShop() {
     loadFavorites();
 
     renderProducts();
+
     renderFavorites();
+
 }
 
 
-/* =================================
+/* ==========================================
    8. LOAD WISHLIST
-================================= */
+========================================== */
 
 function loadFavorites() {
 
-    favorites = JSON.parse(
-        localStorage.getItem(
-            "trendora_favorites_" + currentUser.email
-        ) || "[]"
+    favorites = getStorage(
+        "trendora_favorites_" + currentUser.email,
+        []
     );
+
 }
 
 
-/* =================================
+/* ==========================================
    9. SAVE WISHLIST
-================================= */
+========================================== */
 
 function saveFavorites() {
 
@@ -242,162 +278,252 @@ function saveFavorites() {
         "trendora_favorites_" + currentUser.email,
         JSON.stringify(favorites)
     );
+
 }
 
 
-/* =================================
-   10. MENAMPILKAN PRODUK
-================================= */
+/* ==========================================
+   10. MEMBUAT KARTU PRODUK
+========================================== */
+
+function createProductCard(product) {
+
+    const card = document.createElement("div");
+
+    card.className = "product-card";
+
+    const image = document.createElement("img");
+
+    image.src = product.image;
+
+    image.alt = product.name;
+
+    image.loading = "lazy";
+
+    const info = document.createElement("div");
+
+    info.className = "product-info";
+
+    const category = document.createElement("span");
+
+    category.className = "product-category";
+
+    category.textContent = product.category;
+
+    const name = document.createElement("h3");
+
+    name.textContent = product.name;
+
+    const price = document.createElement("p");
+
+    price.className = "price";
+
+    price.textContent = product.price;
+
+    const actions = document.createElement("div");
+
+    actions.className = "product-actions";
+
+    const buyButton = document.createElement("button");
+
+    buyButton.className = "buy-btn";
+
+    buyButton.textContent = "Beli di Shopee ↗";
+
+    buyButton.addEventListener("click", function() {
+
+        openShopee(product.keyword);
+
+    });
+
+    const favoriteButton = document.createElement("button");
+
+    favoriteButton.className = "favorite-btn";
+
+    favoriteButton.textContent =
+        favorites.includes(product.id) ? "♥" : "♡";
+
+    favoriteButton.addEventListener("click", function() {
+
+        toggleFavorite(product.id);
+
+    });
+
+    actions.appendChild(buyButton);
+
+    actions.appendChild(favoriteButton);
+
+    info.appendChild(category);
+
+    info.appendChild(name);
+
+    info.appendChild(price);
+
+    info.appendChild(actions);
+
+    card.appendChild(image);
+
+    card.appendChild(info);
+
+    return card;
+
+}
+
+
+/* ==========================================
+   11. MENAMPILKAN PRODUK
+========================================== */
 
 function renderProducts() {
 
     productList.innerHTML = "";
 
-    const filtered = products.filter(function(product) {
+    const filteredProducts = products.filter(function(product) {
 
-        const matchCategory =
+        const categoryMatch =
             activeCategory === "Semua" ||
             product.category === activeCategory;
 
-        const matchSearch =
-            product.name.toLowerCase().includes(
-                searchKeyword.toLowerCase()
-            );
+        const keywordMatch = (
 
-        return matchCategory && matchSearch;
+            product.name.toLowerCase().includes(searchKeyword) ||
+
+            product.category.toLowerCase().includes(searchKeyword) ||
+
+            product.keyword.toLowerCase().includes(searchKeyword)
+
+        );
+
+        return categoryMatch && keywordMatch;
+
     });
 
-    if (filtered.length === 0) {
 
-        productList.innerHTML =
-            '<p class="no-product">Produk tidak ditemukan.</p>';
+    if (filteredProducts.length === 0) {
+
+        const message = document.createElement("p");
+
+        message.className = "no-product";
+
+        message.textContent =
+            "Maaf, produk tidak ditemukan. Coba kata kunci lain. 💜";
+
+        productList.appendChild(message);
 
         return;
     }
 
-    filtered.forEach(function(product) {
 
-        const isFavorite = favorites.includes(product.id);
+    filteredProducts.forEach(function(product) {
 
-        const card = document.createElement("div");
-
-        card.className = "product-card";
-
-        card.innerHTML = `
-            <img
-                src="${product.image}"
-                alt="${product.name}"
-                loading="lazy"
-            >
-
-            <div class="product-info">
-
-                <span class="product-category">
-                    ${product.category}
-                </span>
-
-                <h3>${product.name}</h3>
-
-                <p class="price">${product.price}</p>
-
-                <div class="product-actions">
-
-                    <button class="buy-btn">
-                        Beli di Shopee ↗
-                    </button>
-
-                    <button class="favorite-btn">
-                        ${isFavorite ? "♥" : "♡"}
-                    </button>
-
-                </div>
-
-            </div>
-        `;
-
-        card.querySelector(".buy-btn").addEventListener(
-            "click",
-            function() {
-                openShopee(product.keyword);
-            }
+        productList.appendChild(
+            createProductCard(product)
         );
 
-        card.querySelector(".favorite-btn").addEventListener(
-            "click",
-            function() {
-                toggleFavorite(product.id);
-            }
-        );
-
-        productList.appendChild(card);
     });
-}
-
-
-/* =================================
-   11. HUBUNGAN KE SHOPEE
-================================= */
-
-function openShopee(keyword) {
-
-    const shopeeURL =
-        "https://shopee.co.id/search?keyword=" +
-        encodeURIComponent(keyword);
-
-    window.open(shopeeURL, "_blank", "noopener");
 
 }
 
 
-/* =================================
-   12. PENCARIAN PRODUK
-================================= */
+/* ==========================================
+   12. FUNGSI TOMBOL CARI
+========================================== */
 
 function searchProducts() {
 
-    searchKeyword = searchInput.value.trim();
+    searchKeyword = searchInput.value
+        .trim()
+        .toLowerCase();
 
     renderProducts();
+
+    if (searchKeyword === "") {
+
+        searchMessage.textContent =
+            "Menampilkan semua produk.";
+
+    } else {
+
+        const total = products.filter(function(product) {
+
+            return (
+                product.name.toLowerCase().includes(searchKeyword) ||
+                product.category.toLowerCase().includes(searchKeyword) ||
+                product.keyword.toLowerCase().includes(searchKeyword)
+            );
+
+        }).length;
+
+        searchMessage.textContent =
+            total + " produk ditemukan.";
+
+    }
+
+    // Mengarahkan pengguna ke bagian produk
+    document.getElementById("products").scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+    });
+
 }
 
-document.getElementById("searchBtn").addEventListener(
-    "click",
-    searchProducts
-);
 
-searchInput.addEventListener("keydown", function(e) {
+/* ==========================================
+   13. EVENT TOMBOL CARI DAN ENTER
+========================================== */
 
-    if (e.key === "Enter") {
-        searchProducts();
-    }
+searchForm.addEventListener("submit", function(e) {
+
+    e.preventDefault();
+
+    searchProducts();
+
 });
 
 
-/* =================================
-   13. CARI LANGSUNG DI SHOPEE
-================================= */
+/* ==========================================
+   14. MENCARI LANGSUNG DI SHOPEE
+========================================== */
 
-document.getElementById("shopeeSearchBtn").addEventListener(
-    "click",
-    function() {
+function openShopee(keyword) {
+
+    const url =
+        "https://shopee.co.id/search?keyword=" +
+        encodeURIComponent(keyword);
+
+    // Membuka Shopee pada halaman yang sama
+    window.location.href = url;
+
+}
+
+
+/* ==========================================
+   15. TOMBOL SHOPEE
+========================================== */
+
+document.getElementById("shopeeSearchBtn")
+    .addEventListener("click", function() {
 
         const keyword = searchInput.value.trim();
 
         if (keyword === "") {
 
-            alert("Masukkan nama produk terlebih dahulu!");
+            searchMessage.textContent =
+                "Masukkan nama produk terlebih dahulu!";
+
             searchInput.focus();
+
             return;
         }
 
         openShopee(keyword);
-    }
-);
+
+    });
 
 
-/* =================================
-   14. FILTER KATEGORI
-================================= */
+/* ==========================================
+   16. FILTER KATEGORI
+========================================== */
 
 document.querySelectorAll(".category").forEach(
     function(button) {
@@ -406,7 +532,9 @@ document.querySelectorAll(".category").forEach(
 
             document.querySelectorAll(".category").forEach(
                 function(item) {
+
                     item.classList.remove("active");
+
                 }
             );
 
@@ -414,41 +542,53 @@ document.querySelectorAll(".category").forEach(
 
             activeCategory = button.dataset.category;
 
+            // Kosongkan pencarian lama
+            searchKeyword = "";
+
+            searchInput.value = "";
+
+            searchMessage.textContent = "";
+
             renderProducts();
+
         });
+
     }
 );
 
 
-/* =================================
-   15. TAMBAH DAN HAPUS WISHLIST
-================================= */
+/* ==========================================
+   17. TAMBAH DAN HAPUS WISHLIST
+========================================== */
 
 function toggleFavorite(id) {
 
     if (favorites.includes(id)) {
 
-        favorites = favorites.filter(
-            function(item) {
-                return item !== id;
-            }
-        );
+        favorites = favorites.filter(function(item) {
+
+            return item !== id;
+
+        });
 
     } else {
 
         favorites.push(id);
+
     }
 
     saveFavorites();
 
     renderProducts();
+
     renderFavorites();
+
 }
 
 
-/* =================================
-   16. MENAMPILKAN WISHLIST
-================================= */
+/* ==========================================
+   18. MENAMPILKAN WISHLIST
+========================================== */
 
 function renderFavorites() {
 
@@ -456,105 +596,76 @@ function renderFavorites() {
 
     const favoriteProducts = products.filter(
         function(product) {
+
             return favorites.includes(product.id);
+
         }
     );
 
     if (favoriteProducts.length === 0) {
 
-        favoriteList.innerHTML =
-            '<p class="no-product">Belum ada produk favorit ♡</p>';
+        const message = document.createElement("p");
+
+        message.className = "no-product";
+
+        message.textContent =
+            "Belum ada produk favorit. Yuk, pilih produk kesukaanmu! ♡";
+
+        favoriteList.appendChild(message);
 
         return;
     }
 
     favoriteProducts.forEach(function(product) {
 
-        const card = document.createElement("div");
-
-        card.className = "product-card";
-
-        card.innerHTML = `
-            <img src="${product.image}" alt="${product.name}">
-
-            <div class="product-info">
-                <span class="product-category">
-                    ${product.category}
-                </span>
-
-                <h3>${product.name}</h3>
-
-                <p class="price">${product.price}</p>
-
-                <div class="product-actions">
-
-                    <button class="buy-btn">
-                        Beli di Shopee ↗
-                    </button>
-
-                    <button class="favorite-btn">
-                        ♥
-                    </button>
-
-                </div>
-            </div>
-        `;
-
-        card.querySelector(".buy-btn").addEventListener(
-            "click",
-            function() {
-                openShopee(product.keyword);
-            }
+        favoriteList.appendChild(
+            createProductCard(product)
         );
 
-        card.querySelector(".favorite-btn").addEventListener(
-            "click",
-            function() {
-                toggleFavorite(product.id);
-            }
-        );
-
-        favoriteList.appendChild(card);
     });
+
 }
 
 
-/* =================================
-   17. LOGOUT
-================================= */
+/* ==========================================
+   19. LOGOUT
+========================================== */
 
-document.getElementById("logoutBtn").addEventListener(
-    "click",
-    function() {
+document.getElementById("logoutBtn")
+    .addEventListener("click", function() {
 
         localStorage.removeItem("trendora_session");
 
         currentUser = null;
+
         favorites = [];
 
         shopPage.classList.add("hidden");
+
         authPage.classList.remove("hidden");
 
         loginTab.click();
+
         loginForm.reset();
+
         registerForm.reset();
 
         authMessage.textContent = "";
-    }
-);
+
+    });
 
 
-/* =================================
-   18. CEK LOGIN SAAT REFRESH
-================================= */
+/* ==========================================
+   20. CEK SESSION SAAT REFRESH
+========================================== */
 
 if (currentUser && currentUser.email) {
 
-    const validUser = users.find(
-        function(user) {
-            return user.email === currentUser.email;
-        }
-    );
+    const validUser = users.find(function(user) {
+
+        return user.email === currentUser.email;
+
+    });
 
     if (validUser) {
 
@@ -567,6 +678,8 @@ if (currentUser && currentUser.email) {
         currentUser = null;
 
         localStorage.removeItem("trendora_session");
+
     }
-}
-  
+
+       }
+       
